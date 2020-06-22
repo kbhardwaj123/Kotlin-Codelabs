@@ -57,39 +57,17 @@ class GameFragment : Fragment() {
         Log.i("GameFragment", "Called ViewModelProviders.of")
         viewModel = ViewModelProvider(this).get(GameViewModel::class.java)
 
-        viewModel.score.observe(viewLifecycleOwner, Observer {
-            binding.scoreText.text = it.toString()
-        })
-
-        viewModel.word.observe(viewLifecycleOwner, Observer {
-            binding.wordText.text = it
-        })
+        binding.lifecycleOwner = viewLifecycleOwner
 
         viewModel.eventGameFinished.observe(viewLifecycleOwner, Observer {
             if(it) gameFinished()
         })
 
-        binding.correctButton.setOnClickListener { onCorrect() }
-        binding.skipButton.setOnClickListener { onSkip() }
-        binding.endGameButton.setOnClickListener { onEndGame() }
+        binding.gameViewModel = viewModel
         return binding.root
 
     }
 
-    private fun onEndGame() {
-        gameFinished()
-    }
-
-
-    /** Methods for button click handlers **/
-
-    private fun onSkip() {
-        viewModel.onSkip()
-    }
-
-    private fun onCorrect() {
-        viewModel.onCorrect()
-    }
 
     private fun gameFinished() {
         Toast.makeText(activity,"Game Finished",Toast.LENGTH_SHORT).show()
