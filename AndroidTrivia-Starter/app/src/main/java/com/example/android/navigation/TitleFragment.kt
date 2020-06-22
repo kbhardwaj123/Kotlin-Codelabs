@@ -20,7 +20,10 @@ class TitleFragment : Fragment() {
                 inflater,R.layout.fragment_title,container,false
         )
         binding.playButton.setOnClickListener {
-            it.findNavController().navigate(R.id.action_titleFragment_to_gameFragment)
+            //it.findNavController().navigate(R.id.action_titleFragment_to_gameFragment) (uses nav id)
+
+            //so that we can use type-safe arguments with other fragments in the app
+            it.findNavController().navigate(TitleFragmentDirections.actionTitleFragmentToGameFragment())
         }
         setHasOptionsMenu(true)
         return binding.root
