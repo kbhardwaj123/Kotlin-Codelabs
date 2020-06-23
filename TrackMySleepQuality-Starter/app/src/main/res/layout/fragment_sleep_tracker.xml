@@ -101,7 +101,7 @@
             android:onClick="@{() -> sleepTrackerViewModel.onClear()}"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin"
-            android:enabled="@{sleepTrackerViewModel.stopButtonVisible}"
+            android:enabled="@{sleepTrackerViewModel.clearButtonVisible}"
             android:layout_marginEnd="@dimen/margin"
             android:layout_marginBottom="@dimen/margin"
             android:text="@string/clear"
